@@ -76,15 +76,11 @@ fun LoginScreen() {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
-                val image = if (passwordVisible)
-                    IconButton(onClick = {}) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.baseline_visibility_24),
-                            contentDescription = "Show password"
-                        )
-                    }else{
-                        painterResource(R.drawable.baseline_visibility_off_24)
-                    }
+                val painter = if (passwordVisible)
+                    painterResource(id = R.drawable.baseline_visibility_24)
+                else
+                    painterResource(id = R.drawable.baseline_visibility_off_24)
+
                 val desc= if (passwordVisible) "Hide password" else "Show password"
                 IconButton(onClick = {passwordVisible = !passwordVisible}) {
                     Icon(painter = painter, contentDescription = desc)
